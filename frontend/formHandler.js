@@ -12,10 +12,10 @@ class FormHandler {
     submitEvent.preventDefault();
     this._inputForm = new FormData(document.forms["survey-form"]);
     this._inputFormLength = Array.from(this._inputForm.keys()).length;
-    this.main();
+    this._main();
   }
 
-  async validateFormEmpty() {
+  async _validateFormEmpty() {
     return new Promise((resolve, reject) => {
       const formValidationError = new FormValidationError(
         "Form emptiness verification failed"
@@ -45,7 +45,7 @@ class FormHandler {
       !isNaN(parseInt(value, 10))
     );
   }
-  validateInteger() {
+  _validateInteger() {
     let inputProcessed = 1;
     let processValue = `label1-value`;
     let isErrorOccurred = false;
@@ -70,10 +70,10 @@ class FormHandler {
       return true;
     }
   }
-  async main() {
+  async _main() {
     try {
-      const isFormEmptyCheckPass = await this.validateFormEmpty();
-      const isFormIntCheckPass = this.validateInteger();
+      const isFormEmptyCheckPass = await this._validateFormEmpty();
+      const isFormIntCheckPass = this._validateInteger();
       if (isFormEmptyCheckPass && isFormIntCheckPass) {
         const apiRequest = new ApiRequest(this._inputForm);
         apiRequest.sendForm();
