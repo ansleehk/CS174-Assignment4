@@ -1,8 +1,8 @@
 import { SurveySystemException } from './exception.js'
 
 class ApiRequestError extends SurveySystemException{
-    addError(msg){
-        this.errorStack.push(`HTTP Error: ${msg}`)
+    constructor(msg){
+        super(msg);
     }
 }
 
@@ -19,21 +19,22 @@ export class ApiRequest{
     sendForm(
         _updateResultFunc
     ){
-        const xmlRequest = new XMLHttpRequest();
-        xmlRequest.onreadystatechange = () => {
-            if (xmlRequest.readyState === XMLHttpRequest.DONE) {
-                const status = xmlRequest.status;
+        const xhr = new XMLHttpRequest();
+        xhr.timeout = 2000;
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                const status = xhr.status;
                 if (status === 0 || (status >= 200 && status < 400)) {
-                    this._updateResult(xmlRequest.responseText);
+                    this._updateResult(xhr.responseText);
                 } else {
-                    const apiRequestError = new ApiRequestError();
+                    const apiRequestError = new ApiRequestError("HTTP request failed");
                     apiRequestError.addError(`Server replied with status ${status}`)
                     apiRequestError.displayErrorWindow();
                 }  
             }
         }
-        xmlRequest.open("GET", this.API_SERVER_PATH);
-        xmlRequest.send(this.formData);
+        xhr.open("GET", this.API_SERVER_PATH);
+        xhr.send(this.formData);
 
     }
 
