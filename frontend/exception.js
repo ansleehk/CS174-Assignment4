@@ -1,13 +1,13 @@
 export class SurveySystemException extends Error{
     constructor(msg){
         super(msg);
-        this.errorStack = new Array();
+        this._errorStack = new Array();
     }
     addError(msg){
-        this.errorStack.push(msg);
+        this._errorStack.push(msg);
     }
     displayErrorWindow(){
-       alert(`${this.message}:\n ${this.errorStack.toString()}`)
+       alert(`${this.message}:\n ${this._errorStack.toString()}`)
     }
 }
 

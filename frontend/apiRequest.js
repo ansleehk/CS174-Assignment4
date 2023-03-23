@@ -9,8 +9,8 @@ class ApiRequestError extends SurveySystemException{
 export class ApiRequest{
 
     constructor(formData){
-        this.API_SERVER_PATH = "/backend/index.php";
-        this.formData = formData;
+        this._API_SERVER_PATH = "/backend/index.php";
+        this._formData = formData;
     }
     _updateResult(response){
         const RESULT_DISPLAY_CONTAINER_ID = "survey-result"
@@ -31,8 +31,8 @@ export class ApiRequest{
                 }  
             }
         }
-        xhr.open("POST", this.API_SERVER_PATH);
-        xhr.send(this.formData);
+        xhr.open("POST", this._API_SERVER_PATH);
+        xhr.send(this._formData);
 
     }
 
