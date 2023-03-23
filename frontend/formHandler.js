@@ -2,15 +2,8 @@ import { SurveySystemException } from './exception.js'
 import { ApiRequest } from './apiRequest.js';
 
 class FormValidationError extends SurveySystemException{
-    constructor(){
-        super();
-        this.errorStack = new Array();
-    }
-    addError(msg){
-        this.errorStack.push(msg);
-    }
-    displayErrorWindow(){
-       alert(this.errorStack.toString())
+    constructor(msg){
+        super(msg);
     }
 }
 
@@ -24,7 +17,7 @@ class FormHandler{
     
     async validateFormEmpty(){
         return new Promise((resolve, reject) => {
-            const formValidationError = new FormValidationError();
+            const formValidationError = new FormValidationError("Form emptiness verification failed");
             let inputProcessed = 0;
             let isErrorOccurred = false;
             this.inputForm.forEach((value, key)=>{
@@ -51,7 +44,7 @@ class FormHandler{
         let inputProcessed = 1;
         let processValue = `label1-value`;
         let isErrorOccurred = false;
-        const formValidationError = new FormValidationError();
+        const formValidationError = new FormValidationError("Form integer validation failed");
         while (inputProcessed <= this.inputFormLength / 2){
             const VALUE = this.inputForm.get(processValue);
             if (!this._isInt(VALUE)) {
