@@ -31,7 +31,7 @@ export class ApiRequest{
                 }  
             }
         }
-        xhr.open("GET", this.API_SERVER_PATH);
+        xhr.open("POST", this.API_SERVER_PATH);
         xhr.send(this.formData);
 
     }
