@@ -16,9 +16,7 @@ export class ApiRequest{
         const RESULT_DISPLAY_CONTAINER_ID = "survey-result"
         document.getElementById(RESULT_DISPLAY_CONTAINER_ID).innerHTML = response;
     }
-    sendForm(
-        _updateResultFunc
-    ){
+    sendForm(){
         const xhr = new XMLHttpRequest();
         xhr.timeout = 2000;
         xhr.onreadystatechange = () => {
