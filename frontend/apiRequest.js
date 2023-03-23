@@ -8,7 +8,7 @@ class ApiRequestError extends SurveySystemException {
 
 export class ApiRequest {
   constructor(formData) {
-    this._API_SERVER_PATH = "/backend/index.php";
+    this._API_SERVER_PATH = "../backend/index.php";
     this._formData = formData;
   }
   _updateResult(response) {
