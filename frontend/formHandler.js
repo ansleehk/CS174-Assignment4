@@ -35,7 +35,7 @@ class FormHandler{
             })
         })
     }
-    _isInt(value) {
+    _verifyIsInt(value) {
         return !isNaN(value) && 
                parseInt(Number(value)) == value && 
                !isNaN(parseInt(value, 10));
@@ -47,7 +47,7 @@ class FormHandler{
         const formValidationError = new FormValidationError("Form integer validation failed");
         while (inputProcessed <= this.inputFormLength / 2){
             const VALUE = this.inputForm.get(processValue);
-            if (!this._isInt(VALUE)) {
+            if (!this._verifyIsInt(VALUE)) {
                 formValidationError.addError(`The ${processValue} is required to be an integer.\n`);
                 isErrorOccurred = true;
             }
