@@ -11,7 +11,6 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="./main.css">
-    <link rel="stylesheet" type="text/css" href="main.css">
     <script src="./formHandler.js" type="module"></script>
     <script src="./exception.js" type="module"></script>
     <script src="./apiRequest.js" type="module"></script>
