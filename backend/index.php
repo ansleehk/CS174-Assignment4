@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="./main.css">
+    <link rel="stylesheet" type="text/css" href="../frontend/main.css">
     <script src="./formHandler.js" type="module"></script>
     <script src="./exception.js" type="module"></script>
     <script src="./apiRequest.js" type="module"></script>
@@ -60,7 +60,7 @@
             <input type="text" name="label4-name" id="label4-name" placeholder="Name" required><br>
             <label for="label4-value">Value for Label 4:</label>
             <input type="text" name="label4-value" id="label4-value" placeholder="Value" required><br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" onclick="(new FormHandler(event));">
         </form>
     </div>
 
