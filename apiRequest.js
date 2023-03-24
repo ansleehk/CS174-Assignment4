@@ -1,4 +1,5 @@
 import { SurveySystemException } from "./exception.js";
+import { displayChart } from "./chart.js";
 
 class ApiRequestError extends SurveySystemException {
   constructor(msg) {
@@ -8,12 +9,11 @@ class ApiRequestError extends SurveySystemException {
 
 export class ApiRequest {
   constructor(formData) {
-    this._API_SERVER_PATH = "/backend/index.php";
+    this._API_SERVER_PATH = "./api/index.php";
     this._formData = formData;
   }
   _updateResult(response) {
-    const RESULT_DISPLAY_CONTAINER_ID = "survey-result";
-    document.getElementById(RESULT_DISPLAY_CONTAINER_ID).innerHTML = response;
+    displayChart(JSON.parse(response));
   }
   sendForm() {
     const xhr = new XMLHttpRequest();
