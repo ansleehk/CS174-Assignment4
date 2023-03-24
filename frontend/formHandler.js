@@ -84,4 +84,4 @@ class FormHandler {
   }
 }
 
-window.FormHandler = FormHandler;
+window.FormHandler = charts;
